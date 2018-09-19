@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import { SEARCH_RECIPES } from '../../queries';
-import { Link } from 'react-router-dom'
+import SearchItem from './SearchItem';
 
 
 class Search extends Component {
     state = {
         searchResults: []
     }
-    handleChange = ({searchRecipes}) => {
+    handleChange = ({ searchRecipes }) => {
         this.setState({
             searchResults: searchRecipes
         })
     }
     render() {
-        const {searchResults} = this.state;
+        const { searchResults } = this.state;
         return (
             <ApolloConsumer>
                 {client => (
@@ -32,10 +32,7 @@ class Search extends Component {
                             />
                             <ul>
                                 {searchResults.map(recipe =>
-                                    <li key={recipe._id}>
-                                        <Link to={`/articles/${recipe._id}`}><h4>{recipe.name}</h4></Link>
-                                        <div>{recipe.likes}</div>
-                                    </li>
+                                    <SearchItem key={recipe._id} {...recipe}/>
                                 )}
                             </ul>
                         </div>

@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost';
+import { gql } from 'apollo-boost';
 
 export const GET_ALL_RECIPES = gql`
     query {
@@ -25,6 +25,15 @@ export const GET_RECIPE = gql`
 `;
 
 //User Queries
+export const GET_USER_RECIPES = gql`
+    query($username: String!){
+        getUserRecipes(username: $username){
+            _id
+            name
+            likes
+        }
+    }
+`;
 
 export const GET_CURRENT_USER = gql`
     query{
@@ -32,6 +41,10 @@ export const GET_CURRENT_USER = gql`
             username
             joinDate
             email
+            favorites {
+                _id
+                name
+            }
         }
     }
 `;

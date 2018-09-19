@@ -48,7 +48,7 @@ class Root extends Component {
                         <Route path="/signin" render={()=><Signin refetch={refetch} />} />
                         <Route path="/signup" render={()=><Signup refetch={refetch} />} />
                         <Route path="/articles/add" render={()=> <AddRecipe session={session} />} />
-                        <Route path="/profile" component={Profile} />
+                        <Route path="/profile" render={() => <Profile session={session} />} />
                         <Route path="/articles/:_id" component={RecipePage} />
                         <Redirect to="/" />
                     </Switch>
