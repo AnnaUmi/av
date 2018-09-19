@@ -1,42 +1,50 @@
-import React, {Component} from 'react';
-import {ApolloConsumer} from 'react-apollo';
-import {SEARCH_RECIPES} from '../../queries';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { ApolloConsumer } from 'react-apollo';
+import { SEARCH_RECIPES } from '../../queries';
+import { Link } from 'react-router-dom'
 
-export default class Search extends Component {
-    handleChange = data => {
-        console.log(data)
+
+class Search extends Component {
+    state = {
+        searchResults: []
     }
-    render(){
-        return(
+    handleChange = ({searchRecipes}) => {
+        this.setState({
+            searchResults: searchRecipes
+        })
+    }
+    render() {
+        const {searchResults} = this.state;
+        return (
             <ApolloConsumer>
-                {client=> (
-                        <div>
-                            <input type="search" 
-                                onChange={async (event)=> {
+                {client => (
+                    <React.Fragment>
+                        <div className="container">
+                            <input type="search"
+                                onChange={async event => {
                                     event.persist();
-                                    const {data} = await client.query({
+                                    const { data } = await client.query({
                                         query: SEARCH_RECIPES,
-                                        variables: {searchTerm: event.target.value}
+                                        variables: { searchTerm: event.target.value }
                                     });
                                     this.handleChange(data)
-                                }}/>
+                                }}
+                            />
                             <ul>
-                                {[].map(recipe => {
-                                   return(
-                                   <li key={recipe._id}>
-                                        <Link to={/articles/`${recipe._id}`}><h4>{recipe.name}</h4></Link>
-                                        <p>{recipe.likes}</p>
+                                {searchResults.map(recipe =>
+                                    <li key={recipe._id}>
+                                        <Link to={`/articles/${recipe._id}`}><h4>{recipe.name}</h4></Link>
+                                        <div>{recipe.likes}</div>
                                     </li>
-                                   ) 
-                                })}
+                                )}
                             </ul>
                         </div>
-                    )
-                }
+
+                    </React.Fragment>
+                )}
+
             </ApolloConsumer>
-            
         )
     }
-    
 }
+export default Search;
