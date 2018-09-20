@@ -1,8 +1,9 @@
 import React from 'react';
 import UserInfo from './UserInfo';
-import UserRecipes from './UserRecipes'
+import UserRecipes from './UserRecipes';
+import withAuth from '../withAuth';
 
-export default function Profile({ session }) {
+function Profile({ session }) {
     return (
         <div>
             <UserInfo session={session} />
@@ -10,3 +11,4 @@ export default function Profile({ session }) {
         </div>
     )
 }
+export default withAuth(session => session && session.getCurrentUser)(Profile)

@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Navbar from './components/Navbar';
@@ -13,11 +13,12 @@ import Signup from './components/Auth/Signup';
 import RecipePage from './components/Recipe/RecipePage';
 import withSession from './components/withSession';
 import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
+import 'font-awesome/css/font-awesome.css';
 
 const client = new ApolloClient({
     uri: 'http://localhost:4444/graphql',
-    fetchOptions:{
+    fetchOptions: {
         credentials: 'include'
     },
     request: operation => {
@@ -28,7 +29,7 @@ const client = new ApolloClient({
             }
         })
     },
-    onError:({networkError}) => {
+    onError: ({ networkError }) => {
         if (networkError) {
             console.log('Network Error', networkError);
         }
@@ -37,17 +38,17 @@ const client = new ApolloClient({
 
 class Root extends Component {
     render() {
-        const {refetch, session} = this.props;
-        return(
+        const { refetch, session } = this.props;
+        return (
             <Router>
                 <Fragment>
-                    <Navbar session={session}/>
+                    <Navbar session={session} />
                     <Switch>
                         <Route path="/" exact component={App} />
                         <Route path="/search" component={Search} />
-                        <Route path="/signin" render={()=><Signin refetch={refetch} />} />
-                        <Route path="/signup" render={()=><Signup refetch={refetch} />} />
-                        <Route path="/articles/add" render={()=> <AddRecipe session={session} />} />
+                        <Route path="/signin" render={() => <Signin refetch={refetch} />} />
+                        <Route path="/signup" render={() => <Signup refetch={refetch} />} />
+                        <Route path="/articles/add" render={() => <AddRecipe session={session} />} />
                         <Route path="/profile" render={() => <Profile session={session} />} />
                         <Route path="/articles/:_id" component={RecipePage} />
                         <Redirect to="/" />
@@ -56,13 +57,13 @@ class Root extends Component {
             </Router>
         )
     }
-    
+
 };
 const RootWithSession = withSession(Root);
 
 ReactDOM.render(
-<ApolloProvider client={client}>
-    <RootWithSession />
-</ApolloProvider>
-, document.getElementById('root'));
+    <ApolloProvider client={client}>
+        <RootWithSession />
+    </ApolloProvider>
+    , document.getElementById('root'));
 

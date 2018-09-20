@@ -25,15 +25,6 @@ export const GET_RECIPE = gql`
 `;
 
 //User Queries
-export const GET_USER_RECIPES = gql`
-    query($username: String!){
-        getUserRecipes(username: $username){
-            _id
-            name
-            likes
-        }
-    }
-`;
 
 export const GET_CURRENT_USER = gql`
     query{
@@ -48,7 +39,38 @@ export const GET_CURRENT_USER = gql`
         }
     }
 `;
-
+export const GET_USER_RECIPES = gql`
+    query($username: String!){
+        getUserRecipes(username: $username){
+            _id
+            name
+            likes
+        }
+    }
+`;
+export const LIKE = gql`
+    mutation($_id: ID!, $username: String!){
+        like(_id: $_id, username: $username){
+            _id
+            likes
+        }
+    }
+`;
+export const UNLIKE = gql`
+    mutation($_id: ID!, $username: String!){
+        unlike(_id: $_id, username: $username){
+            _id
+            likes
+        }
+    }
+`;
+export const DELETE_USER_RECIPE = gql`
+    mutation($_id: ID!) {
+        deleteUserRecipe(_id: $_id){
+            _id
+        }   
+    }
+`;
 export const SIGNIN_USER = gql`
     mutation($username: String!, $password: String!){
         signinUser(username: $username, password: $password){
