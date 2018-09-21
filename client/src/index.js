@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Navbar from './components/Navbar';
+import Blog from './components/Blog'
 import Search from './components/Recipe/Search';
 import AddRecipe from './components/Recipe/AddRecipe';
 import Profile from './components/Profile/Profile'
@@ -46,6 +46,7 @@ class Root extends Component {
                     <Navbar session={session} />
                     <Switch>
                         <Route path="/" exact component={App} />
+                        <Route path="/blog" exact component={Blog} />
                         <Route path="/search" component={Search} />
                         <Route path="/signin" render={() => <Signin refetch={refetch} />} />
                         <Route path="/signup" render={() => <Signup refetch={refetch} />} />
