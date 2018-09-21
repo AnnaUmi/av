@@ -17,7 +17,8 @@ import { ApolloProvider } from 'react-apollo';
 import 'font-awesome/css/font-awesome.css';
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4444/graphql',
+    //uri: 'http://localhost:4444/graphql',
+    uri: 'https://apollo-react-blog.herokuapp.com/graphql',
     fetchOptions: {
         credentials: 'include'
     },
