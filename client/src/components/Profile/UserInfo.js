@@ -17,11 +17,11 @@ const UserInfo = ({ session }) => {
             <p> join date: {formatDate(session.getCurrentUser.joinDate)}</p>
             <p>{session.getCurrentUser.username}'s Favorites</p>
             <ul>
-                {session.getCurrentUser.favorites.map(favorite => {
+                {session.getCurrentUser.favorites.map(favorite => (
                     <li key={favorite._id}>
                         <Link to={`/articles/${favorite._id}`}><p>{favorite.name}</p></Link>
                     </li>
-                })}
+                ))}
                 {!session.getCurrentUser.favorites.length && <p>You dont have any favorits yet!</p>}
             </ul>
         </div>

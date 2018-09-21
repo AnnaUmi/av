@@ -31,12 +31,10 @@ class Like extends Component {
     handleLike = (like, unlike) => {
         if (this.state.liked) {
             like().then(async ({ data }) => {
-                console.log(data)
                 await this.props.refetch();
             });
         } else {
             unlike().then(async ({ data }) => {
-                console.log(data)
                 await this.props.refetch();
             });
         }

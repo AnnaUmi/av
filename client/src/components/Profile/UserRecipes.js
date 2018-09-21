@@ -1,13 +1,13 @@
 import React from 'react';
 import { Query, Mutation } from 'react-apollo';
-import { GET_USER_RECIPES, DELETE_USER_RECIPE, GET_ALL_RECIPES } from '../../queries';
+import { GET_USER_RECIPES, DELETE_USER_RECIPE, GET_ALL_RECIPES, GET_CURRENT_USER } from '../../queries';
 import { Link } from 'react-router-dom';
 
 const handleDelete = deleteUserRecipe => {
     const confirmDelete = window.confirm('Вы уверенны что хотите удалить статью?');
     if (confirmDelete) {
         deleteUserRecipe().then(({ data }) => {
-            console.log(data)
+            //console.log(data)
         })
     }
 }
@@ -17,7 +17,8 @@ const UserRecipes = ({ username }) => (
         {({ data, loading, error }) => {
             if (loading) return <div>Loading</div>
             if (error) return <div>error</div>
-            console.log(data)
+
+
             return (
                 <div className="container">
                     <div className="row">
@@ -32,7 +33,7 @@ const UserRecipes = ({ username }) => (
                                         variables={{ _id: recipe._id }}
                                         refetchQueries={() => [
                                             { query: GET_ALL_RECIPES },
-                                            { query: GET_USER_RECIPES }
+                                            { query: GET_CURRENT_USER }
                                         ]}
                                         update={(cache, { data: { deleteUserRecipe } }) => {
                                             const { getUserRecipes } = cache.readQuery({
