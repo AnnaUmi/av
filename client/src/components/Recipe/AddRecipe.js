@@ -4,9 +4,11 @@ import { ADD_RECIPE, GET_ALL_RECIPES, GET_USER_RECIPES } from '../../queries';
 import Error from '../Error';
 import { withRouter } from 'react-router-dom';
 import withAuth from '../withAuth';
+import CKEditor from 'react-ckeditor-component';
 
 const initialState = {
     name: '',
+    imageUrl: '',
     instructions: '',
     category: 'JavaScript',
     description: '',
@@ -31,9 +33,13 @@ class AddRecipe extends Component {
             [name]: value
         })
     }
+    handleEditorChange = event =>{
+        const newContent = event.editor.getData();
+        this.setState({instructions: newContent});
+    }
     validateForm = () => {
-        const { name, category, description, instructions } = this.state;
-        const isInvalid = !name || !category || !description || !instructions;
+        const { name, imageUrl, category, description, instructions } = this.state;
+        const isInvalid = !name || !imageUrl || !category || !description || !instructions;
         return isInvalid;
     }
     handleSubmit = (event, addRecipe) => {
@@ -53,11 +59,11 @@ class AddRecipe extends Component {
         })
     }
     render() {
-        const { name, category, description, instructions, username } = this.state;
+        const { name, imageUrl, category, description, instructions, username } = this.state;
         return (
             <Mutation
                 mutation={ADD_RECIPE}
-                variables={{ name, category, description, instructions, username }}
+                variables={{ name, imageUrl, category, description, instructions, username }}
                 refetchQueries={() => [
                     { query: GET_USER_RECIPES, variables: { username } }
                 ]}
@@ -65,9 +71,7 @@ class AddRecipe extends Component {
             >
                 {(addRecipe, { data, loading, error }) => {
                     return (
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-12">
+                        <div className="page-content">
                                     <h2>Add Recipe</h2>
                                     <form onSubmit={(event) => this.handleSubmit(event, addRecipe)}>
                                         <div className="form-group">
@@ -76,6 +80,15 @@ class AddRecipe extends Component {
                                                 className="form-control"
                                                 type="text"
                                                 name="name" placeholder="name"
+                                                onChange={this.handleChange}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <input
+                                                value={imageUrl}
+                                                className="form-control"
+                                                type="text"
+                                                name="imageUrl" placeholder="imageUrl"
                                                 onChange={this.handleChange}
                                             />
                                         </div>
@@ -97,16 +110,17 @@ class AddRecipe extends Component {
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <textarea
-                                                value={instructions}
-                                                className="form-control" rows="10" placeholder="instructions" name="instructions" onChange={this.handleChange} />
-                                        </div>
+                                        <label htmlFor="instructions">Написать статью</label>
+                                        <CKEditor 
+                                            name="instructions"
+                                            content={instructions}
+                                            events={{change: this.handleEditorChange}}
+                                        />
+                                            </div>
                                         <button disabled={loading || this.validateForm()} type="submit" className="btn btn-primary">Submit</button>
                                         {error && <Error error={error} />}
                                     </form>
                                 </div>
-                            </div>
-                        </div>
                     )
                 }}
             </Mutation>

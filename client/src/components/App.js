@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Query} from 'react-apollo';
-import {GET_ALL_RECIPES} from '../queries';
-import RecipeItem from './Recipe/RecipeItem';
-
+import Hero from './Hero';
+import Cv from './Cv';
+import Portfolio from './Portfolio';
+import Blog from './Blog';
+import { ParallaxProvider } from 'react-scroll-parallax';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-    <h1>Home</h1>
-    <Query query={GET_ALL_RECIPES}>
-      {({data, loading, error}) => {
-        if(loading) return <div>loading</div>
-        if(error) return <div>error</div>
-        return (
-          <ul>
-            {data.getAllRecipes.map(recipe => {
-              return <RecipeItem key={recipe._id} {...recipe}/>
-            })}
-          </ul>
-        )
-      }}
-    </Query>
-  </div>
+      <ParallaxProvider>
+        <Hero />
+        <Cv />
+        <Portfolio />
+        <Blog />
+      </ParallaxProvider>
     );
   }
 }

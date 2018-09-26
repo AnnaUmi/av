@@ -8,6 +8,9 @@ class Search extends Component {
     state = {
         searchResults: []
     }
+    componentWillUnmount() {
+        window.addEventListener('scroll', this.handleScroll)
+    }
     handleChange = ({ searchRecipes }) => {
         this.setState({
             searchResults: searchRecipes
@@ -16,10 +19,10 @@ class Search extends Component {
     render() {
         const { searchResults } = this.state;
         return (
-            <ApolloConsumer>
-                {client => (
-                    <React.Fragment>
-                        <div className="container">
+            <div className="page-content">
+                <ApolloConsumer>
+                    {client => (
+                        <React.Fragment>
                             <input type="search"
                                 onChange={async event => {
                                     event.persist();
@@ -32,15 +35,15 @@ class Search extends Component {
                             />
                             <ul>
                                 {searchResults.map(recipe =>
-                                    <SearchItem key={recipe._id} {...recipe}/>
+                                    <SearchItem key={recipe._id} {...recipe} />
                                 )}
                             </ul>
-                        </div>
+                        </React.Fragment>
+                    )}
 
-                    </React.Fragment>
-                )}
+                </ApolloConsumer>
+            </div>
 
-            </ApolloConsumer>
         )
     }
 }

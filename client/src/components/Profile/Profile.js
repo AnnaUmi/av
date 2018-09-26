@@ -5,7 +5,7 @@ import withAuth from '../withAuth';
 
 function Profile({ session }) {
     return (
-        <div>
+        <div className="page-content">
             <UserInfo session={session} />
             <UserRecipes username={session.getCurrentUser.username} />
         </div>

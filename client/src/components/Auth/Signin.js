@@ -41,9 +41,7 @@ class Signin extends React.Component{
     render(){
         const {username, password} = this.state;
         return(
-            <div className="App">
-                <div className="container">
-                <div className="row">
+            <div className="page-content">
                 <h2 className="component-title">Signin</h2>
                 <Mutation mutation={SIGNIN_USER} variables={{username, password}}>
                     {(signinUser, {data, loading, error}) => {
@@ -66,8 +64,7 @@ class Signin extends React.Component{
                     
                 </Mutation>
             </div>
-                </div> 
-            </div>
+
         )
     }
 }

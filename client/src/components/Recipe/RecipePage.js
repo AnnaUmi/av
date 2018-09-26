@@ -4,6 +4,13 @@ import { withRouter } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import { GET_RECIPE } from '../../queries/index';
 
+const formatDate = date => {
+    const newDate = new Date(date).toLocaleDateString('ru-Ru');
+    const newTime = new Date(date).toLocaleTimeString('ru-Ru');
+    return `${newDate} в ${newTime}`
+
+}
+
 function RecipePage({ match }) {
     const { _id } = match.params;
     return (
@@ -11,19 +18,26 @@ function RecipePage({ match }) {
             {({ data, loading, error }) => {
                 if (loading) return <div>loading</div>
                 if (error) return <div>error</div>
+                console.log(data)
                 return (
-                    <div className="container">
-                        <h1>{data.getRecipe.name}</h1>
-                        <div>Category: {data.getRecipe.category}</div>
-                        <div>Description: {data.getRecipe.description}</div>
-                        <div>Instructions: {data.getRecipe.instructions}</div>
+                    <div className="page-content">
+                        <div className="container">
+                            <div className="article">
+                                <h1 className="article__title">{data.getRecipe.name}</h1>
+                                <div className="article__img"
+                                    style={{background: `url(${data.getRecipe.imageUrl}) center center / cover no-repeat`}}/>
+                                <div className="article__category"><span className="article__label">Категория:</span> {data.getRecipe.category}</div>
 
-                        <div>Created by: {data.getRecipe.username}</div>
-                       
-                    </div>
-                )
-            }}
+                                <div className="article__text" dangerouslySetInnerHTML={{__html: data.getRecipe.instructions}}></div>
+
+                                <div className="article__user">Автор: {data.getRecipe.username}</div>
+                                <div className="article__date">Дата: {formatDate(data.getRecipe.createdDate)}</div>
+                                </div>
+                        </div>
+</div>
+                        )
+                    }}
         </Query>
-    )
-}
+                )
+            }
 export default withRouter(RecipePage)
