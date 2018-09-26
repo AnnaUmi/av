@@ -18,7 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const client = new ApolloClient({
     //uri: 'http://localhost:4444/graphql',
-    uri: 'https://apollo-react-blog.herokuapp.com/graphql',
+    uri: 'https://annavlasenko.herokuapp.com/graphql',
     fetchOptions: {
         credentials: 'include'
     },
