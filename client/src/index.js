@@ -13,12 +13,14 @@ import RecipePage from './components/Recipe/RecipePage';
 import withSession from './components/withSession';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import 'font-awesome/css/font-awesome.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Cv from './components/Cv';
+import Portfolio from './components/Portfolio';
+import Footer from './components/Footer';
+
 
 const client = new ApolloClient({
-    //uri: 'http://localhost:4444/graphql',
-    uri: 'https://annavlasenko.herokuapp.com/graphql',
+    uri: 'http://localhost:4444/graphql',
+    //uri: 'https://annavlasenko.herokuapp.com/graphql',
     fetchOptions: {
         credentials: 'include'
     },
@@ -41,23 +43,36 @@ class Root extends Component {
     render() {
         const { refetch, session } = this.props;
         return (
-            <Router>
-                <Fragment>
-                    <Header session={session} />
-                    <Switch>
-                        <Route path="/" exact component={App} />
-                        <Route path="/blog" exact component={Blog} />
-                        <Route path="/search" component={Search} />
-                        <Route path="/signin" render={() => <Signin refetch={refetch} />} />
-                        <Route path="/signup" render={() => <Signup refetch={refetch} />} />
-                        <Route path="/articles/add" render={() => <AddRecipe session={session} />} />
-                        <Route path="/profile" render={() => <Profile session={session} />} />
-                        <Route path="/articles/:_id" component={RecipePage} />
-                        <Redirect to="/" />
-                    </Switch>
-                </Fragment>
-            </Router>
+            <Fragment>
+                <div className="wrapper">
+                    <div className="content">
+                        <Router>
+                            <Fragment>
+                                <Header session={session} />
+                                <Switch>
+                                    <Route path="/" exact component={App} />
+                                    <Route path="/blog" component={Blog} />
+                                    <Route path="/cv" component={Cv} />
+                                    <Route path="/portfolio" component={Portfolio} />
+                                    <Route path="/search" component={Search} />
+                                    <Route path="/signin" render={() => <Signin refetch={refetch} />} />
+                                    <Route path="/signup" render={() => <Signup refetch={refetch} />} />
+                                    <Route path="/articles/add" render={() => <AddRecipe session={session} />} />
+                                    <Route path="/profile" render={() => <Profile session={session} />} />
+                                    <Route path="/articles/:_id" component={RecipePage} />
+                                    <Redirect to="/" />
+                                </Switch>
+                            </Fragment>
+                        </Router>
+                    </div>
+                    <Footer />
+                </div>
+
+                
+            </Fragment>
+
         )
+
     }
 
 };

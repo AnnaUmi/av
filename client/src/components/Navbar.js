@@ -11,7 +11,7 @@ const Navbar = (props) => {
             onClose={() => props.onClose(false)}
         >
             <nav className="nav">
-                {props.session && props.session.getCurrentUser ? <NavbarAuth onClose={props.onClose} session={props.session} /> : <NavbarUnAuth onClose={props.onClose}/>}
+                {props.session && props.session.getCurrentUser ? <NavbarAuth onClose={props.onClose} session={props.session} /> : <NavbarUnAuth onClose={props.onClose} />}
             </nav>
         </Drawer>
     )
@@ -27,6 +27,12 @@ const NavbarAuth = (props) => {
             <ul className="nav__list">
                 <li className="nav__item">
                     <NavLink onClick={removeMenu} className="nav__link" to="/" exact>Home</NavLink>
+                </li>
+                <li className="nav__item">
+                    <NavLink onClick={removeMenu} className="nav__link" to="/cv" exact>Cv</NavLink>
+                </li>
+                <li className="nav__item">
+                    <NavLink onClick={removeMenu} className="nav__link" to="/portfolio" exact>Portfolio</NavLink>
                 </li>
                 <li className="nav__item">
                     <NavLink onClick={removeMenu} className="nav__link" to="/search">Searh</NavLink>
@@ -59,7 +65,12 @@ const NavbarUnAuth = (props) => {
             <li className="nav__item">
                 <NavLink onClick={removeMenu} className="nav__link" to="/" exact>Home</NavLink>
             </li>
-
+            <li className="nav__item">
+                <NavLink onClick={removeMenu} className="nav__link" to="/cv" exact>Cv</NavLink>
+            </li>
+            <li className="nav__item">
+                    <NavLink onClick={removeMenu} className="nav__link" to="/portfolio" exact>Portfolio</NavLink>
+                </li>
             <li className="nav__item">
                 <NavLink onClick={removeMenu} className="nav__link" to="/search">Searh</NavLink>
             </li>

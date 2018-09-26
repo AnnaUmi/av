@@ -10,7 +10,7 @@ export default function RecipeItem({ _id, imageUrl, description, name, category 
                 </div>
                 <div className="articles__body">
                     <h4 className="articles__title" >{name}</h4>
-                    <div className="articles__category">{category}</div>
+                    <div className="articles__category"> <span className="article__label">{category}</span></div>
                     <div className="articles__description">{description}</div>
                 </div>
             </Link>

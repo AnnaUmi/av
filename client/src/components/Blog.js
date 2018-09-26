@@ -7,7 +7,7 @@ import Title from './utiles/Title'
 class App extends Component {
   render() {
     return (
-      <div className="page-content">
+      <div>
       <Title title={"{Blog}"} />
         <Query query={GET_ALL_RECIPES}>
           {({ data, loading, error }) => {
