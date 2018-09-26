@@ -48,6 +48,10 @@ class Header extends Component {
                         {logo}
                        
                     </div>
+                    <div className="contacts">
+                        <div className="tel">+38063 590 15 39</div>
+                        <div className="email">anna.a.vlasenko@yandex.ua</div>
+                    </div>
                     <ListLinkIcon />
                     <IconButton
                         aria-label="Menu"

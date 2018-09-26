@@ -38,7 +38,7 @@ const NavbarAuth = (props) => {
                     <NavLink onClick={removeMenu} className="nav__link" to="/search">Searh</NavLink>
                 </li>
                 <li className="nav__item">
-                    <NavLink onClick={removeMenu} className="nav__link" to="/articles/add">Add Recipe</NavLink>
+                    <NavLink onClick={removeMenu} className="nav__link" to="/articles/add">Add Article</NavLink>
                 </li>
                 <li className="nav__item">
                     <NavLink onClick={removeMenu} className="nav__link" to="/profile">Profile</NavLink>

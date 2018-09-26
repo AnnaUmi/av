@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SearchItem = ({_id, name, likes}) => {
+const SearchItem = ({_id, name}) => {
     return (
-        <li>
+        <li className="search__item">
             <Link to={`/articles/${_id}`}><h4>{name}</h4></Link>
-            <div>Likes:{likes}</div>
+
         </li>
     );
 }

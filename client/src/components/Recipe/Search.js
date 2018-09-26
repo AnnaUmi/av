@@ -20,28 +20,31 @@ class Search extends Component {
         const { searchResults } = this.state;
         return (
             <div className="page-content">
-                <ApolloConsumer>
-                    {client => (
-                        <React.Fragment>
-                            <input type="search"
-                                onChange={async event => {
-                                    event.persist();
-                                    const { data } = await client.query({
-                                        query: SEARCH_RECIPES,
-                                        variables: { searchTerm: event.target.value }
-                                    });
-                                    this.handleChange(data)
-                                }}
-                            />
-                            <ul>
-                                {searchResults.map(recipe =>
-                                    <SearchItem key={recipe._id} {...recipe} />
-                                )}
-                            </ul>
-                        </React.Fragment>
-                    )}
+                <div class="container">
+                    <ApolloConsumer>
+                        {client => (
+                            <React.Fragment>
+                                <input className="search-input" type="search"
+                                    onChange={async event => {
+                                        event.persist();
+                                        const { data } = await client.query({
+                                            query: SEARCH_RECIPES,
+                                            variables: { searchTerm: event.target.value }
+                                        });
+                                        this.handleChange(data)
+                                    }}
+                                />
+                                <ul>
+                                    {searchResults.map(recipe =>
+                                        <SearchItem key={recipe._id} {...recipe} />
+                                    )}
+                                </ul>
+                            </React.Fragment>
+                        )}
 
-                </ApolloConsumer>
+                    </ApolloConsumer>
+                </div>
+
             </div>
 
         )

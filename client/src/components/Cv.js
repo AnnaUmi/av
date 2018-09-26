@@ -11,10 +11,11 @@ const Cv = () => {
                     <h2 className="subtitle">Skills</h2>
                     <h3 className="smalltitle">Web skills</h3>
                     <ul className="skills__list">
-                        <li className="skills__item">HTML: HTML4/5, Pug, BEM, Twitter Bootstrap</li>
+                        <li className="skills__item">HTML: HTML4/5, Pug, BEM, Twitter Bootstrap, Material UI</li>
                         <li className="skills__item">CSS: CSS2/3, SASS</li>
-                        <li className="skills__item">'JavaScript': JS (ES5/6), jQuery, NodeJs, Express</li>
+                        <li className="skills__item">'JavaScript': OOP, Patterns, JS (ES5/6), jQuery, NodeJs, Express, React, React Apollo, GraphQL</li>
                         <li className="skills__item">Adaptive Web Design, Cross-Browser Layout</li>
+                        <li className="skills__item">Wordpress</li>
                     </ul>
                     <h3 className="smalltitle">Graphic editor</h3>
 
@@ -37,6 +38,18 @@ const Cv = () => {
                     <ul className="skills__list">
                         <li className="skills__item">Git</li>
                     </ul>
+                    <h3 className="smalltitle">Software development:</h3>
+                    <ul className="skills__list">
+                        <li className="skills__item">Agile Scrum</li>
+                        <li className="skills__item">Waterfall</li>
+                    </ul>
+                    <h3 className="smalltitle">Cloud Application Platform:</h3>
+                    <ul className="skills__list">
+                        <li className="skills__item">Heroku</li>
+                        <li className="skills__item">Amazon</li>
+                    </ul>
+                    
+                    
                 </div>
                 <div className="educucation">
                     <h2 className="subtitle">Education</h2>
@@ -58,6 +71,15 @@ const Cv = () => {
                         <li className="skills__item">edX Honor Code Certificate for Learn HTML5 from W3C 2016</li>
                         <li className="skills__item">Web advanced course Loftschool</li>
                         <li className="skills__item">JavaScript course Loftschool</li>
+                        <li className="skills__item">JavaScript HTML Academy</li>
+                        <li className="skills__item">JavaScript course Udemy</li>
+                        <li className="skills__item">React course Udemy</li>
+                        <li className="skills__item">Trainee Epam</li>
+                    </ul>
+                    <h3 className="smalltitle">Experience</h3>
+                    <ul className="skills__list">
+                        <li className="skills__item">Web studio "Umi", frontend developer, 2016-2017</li>
+                        <li className="skills__item">Trainee Epam, frontend developer (react, javascript), 2017-2018</li>
                     </ul>
                 </div>
 
