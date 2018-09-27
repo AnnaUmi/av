@@ -13,9 +13,9 @@ const Cv = () => {
                     <ul className="skills__list">
                         <li className="skills__item">HTML: HTML4/5, Pug, BEM, Twitter Bootstrap, Material UI</li>
                         <li className="skills__item">CSS: CSS2/3, SASS</li>
-                        <li className="skills__item">'JavaScript': OOP, Patterns, JS (ES5/6), jQuery, NodeJs, Express, React, React Apollo, GraphQL</li>
-                        <li className="skills__item">Adaptive Web Design, Cross-Browser Layout</li>
-                        <li className="skills__item">Wordpress</li>
+                        <li className="skills__item">JavaScript: OOP, Patterns, JS (ES5/6), jQuery, NodeJs, Express, React, React Apollo, GraphQL, Ajax</li>
+                        <li className="skills__item">Adaptive Web Design, Cross-Browser Layout, Wordpress</li>
+                        <li className="skills__item">MySQL, MongoDB</li>
                     </ul>
                     <h3 className="smalltitle">Graphic editor</h3>
 
