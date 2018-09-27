@@ -16,7 +16,7 @@ import { ApolloProvider } from 'react-apollo';
 import Cv from './components/Cv';
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer';
-
+import YandexMetrika from './components/YandexMetrika';
 
 const client = new ApolloClient({
     //uri: 'http://localhost:4444/graphql',
@@ -68,7 +68,7 @@ class Root extends Component {
                     <Footer />
                 </div>
 
-                
+            <YandexMetrika />
             </Fragment>
 
         )
