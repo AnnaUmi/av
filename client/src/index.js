@@ -20,7 +20,7 @@ import YandexMetrika from './components/YandexMetrika';
 
 const client = new ApolloClient({
     //uri: 'http://localhost:4444/graphql',
-    uri: 'https://annavlasenko.com/graphql',
+    uri: 'https://annavlasenko.herokuapp.com/graphql',
     fetchOptions: {
         credentials: 'include'
     },
