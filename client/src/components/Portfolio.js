@@ -15,7 +15,7 @@ const Portfolio = () => {
                     <ul className="portfolio__list">
                         <li className="portfolio__item">
                             <div className="portfolio__content">
-                                <h2 className="portfolio__title">Website developed for Mikiz</h2>
+                                <h2 className="portfolio__title">!!Website developed for Mikiz</h2>
                                 <div className="portfolio__img" style={{ background: `url(${Mikiz_img}) center center / cover no-repeat` }} />
                                 <div className="portfolio__descr">Adaptive web design. The customer provided an example of the site. High page load speed.</div>
                                 <h3 className="portfolio__subtitle">Code technologies and skills I got involved while working on this project</h3>
