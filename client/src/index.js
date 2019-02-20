@@ -19,8 +19,8 @@ import Footer from './components/Footer';
 import YandexMetrika from './components/YandexMetrika';
 
 const client = new ApolloClient({
-    //uri: 'http://localhost:4444/graphql',
-    uri: 'https://annavlasenko.herokuapp.com/graphql',
+    uri: 'http://localhost:4444/graphql',
+    //uri: 'https://annavlasenko.herokuapp.com/graphql',
     fetchOptions: {
         credentials: 'include'
     },
