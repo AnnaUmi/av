@@ -24,6 +24,7 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-sslify": "^1.2.0",
     "font-awesome": "^4.7.0",
     "graphql": "^0.13.2",
     "graphql-tools": "^3.0.2",
