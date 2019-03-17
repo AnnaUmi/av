@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const path = require("path");
-var http = require("http");
-var enforce = require("express-sslify");
+const sslRedirect = require("heroku-ssl-redirect");
 
 require("dotenv").config({ path: "variables.env" });
 
@@ -29,12 +28,12 @@ mongoose
   .catch(err => console.error(err));
 
 const app = express();
+app.use(sslRedirect());
 
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true
 };
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors(corsOptions));
 
 //Set up JWT authentification middleware
